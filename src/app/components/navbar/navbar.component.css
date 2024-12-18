@@ -1,0 +1,15 @@
+* {
+    padding: 5px;
+    margin: 0;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: end;
+    background-color: blanchedalmond;
+}
+
+ul {
+    display: flex;
+    list-style: none;
+}
