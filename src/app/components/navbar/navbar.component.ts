@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router'; // To allow routing
 import { CommonModule } from '@angular/common';  // To allow standard direktives (*ngIf, *ngFor etc) in standalone components
 
 
+
 @Component({
   selector: 'app-navbar',
   standalone: true,

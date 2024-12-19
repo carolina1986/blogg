@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
-import { Title } from '@angular/platform-browser';
-import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { PostService } from '../../services/post.service';
 
 @Component({
   selector: 'app-create-new-post-page',
   standalone: true,
-  imports: [RouterOutlet, FormsModule], // Added FormsModule for ngModel
+  imports: [FormsModule],
   templateUrl: './create-new-post-page.component.html',
-  styleUrls: ['./create-new-post-page.component.css']
+  styleUrls: ['./create-new-post-page.component.css'],
 })
 export class CreateNewPostPageComponent {
   newPost = {
@@ -18,13 +17,13 @@ export class CreateNewPostPageComponent {
     creationDate: new Date(),
     likes: 0,
     dislikes: 0,
-    comments: []
+    comments: [],
   };
-  
+
+  constructor(private postService: PostService) {}
+
   onSubmit() {
-    const posts = JSON.parse(localStorage.getItem('blogPosts') || '[]');
-    posts.push(this.newPost);
-    localStorage.setItem('blogPosts', JSON.stringify(posts));
+    this.postService.addPost(this.newPost); // Använd servicen för att lägga till inlägget
     alert('Blog post has been saved!');
     this.resetForm();
   }
@@ -37,7 +36,7 @@ export class CreateNewPostPageComponent {
       creationDate: new Date(),
       likes: 0,
       dislikes: 0,
-      comments: []
+      comments: [],
     };
   }
 }
