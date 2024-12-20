@@ -1,10 +1,12 @@
 <div class="home-page">
     <h1>Welcome to Home Page</h1>
+    <!-- Show posts if available, otherwise show "no posts" message -->
     <div *ngIf="posts.length > 0; else noPosts">
         <div *ngFor="let post of posts" class="post-card">
             <h2>{{post.title}}</h2>
+            <!-- Only show image if thumbnailUrl exists -->
             <img [src]="post.thumbnailUrl" *ngIf="post.thumbnailUrl">
-            <button routerLink="/single-post/{{post.id}}">Read more</button>
+            <button class="button-type-one" routerLink="/single-post/{{post.id}}">Read more</button>
         </div>
     </div>
     

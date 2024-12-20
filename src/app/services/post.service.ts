@@ -9,57 +9,50 @@ export class PostService {
   private postsSubject: BehaviorSubject<any[]>;
 
   constructor() {
-    console.log('PostService constructor called');
-    try {
-      // Initialize BehaviorSubject after getting storage data
-      const initialPosts = this.getPostsFromStorage();
-      this.postsSubject = new BehaviorSubject<any[]>(initialPosts);
-      
-      if (initialPosts.length === 0) {
-        console.log('No posts found, adding test post');
-        const testPost = {
-          title: 'Test Post',
-          body: 'Test Content',
-          creationDate: new Date()
-        };
-        this.addPost(testPost);
-      }
-      
-      console.log('Initial posts loaded:', initialPosts);
-    } catch (error) {
-      console.error('Error initializing PostService:', error);
-      this.postsSubject = new BehaviorSubject<any[]>([]);
+    const initialPosts = this.getPostsFromStorage();
+    this.postsSubject = new BehaviorSubject<any[]>(initialPosts);
+    
+    if (initialPosts.length === 0) {
+      const testPost = {
+        id: this.generateId(), // Lägg till ID
+        title: 'Test Post',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec n unc.',
+        thumbnailUrl: 'https://media.istockphoto.com/id/1084742460/photo/flat-earth.webp?a=1&b=1&s=612x612&w=0&k=20&c=TF7KgvPgBo1koKcC4pta8Zs5vynKt1gYzbJwH3ATuWk=',
+        creationDate: new Date()
+      };
+      this.addPost(testPost);
     }
   }
 
+  // Generera unikt ID för varje inlägg
+  private generateId(): string {
+    return Date.now().toString();
+  }
+
+  // Hämta ett specifikt inlägg baserat på ID
+  getPost(id: string): Observable<any> {
+    return new Observable(observer => {
+      const posts = this.getPostsFromStorage();
+      const post = posts.find(p => p.id === id);
+      observer.next(post || null);
+      observer.complete();
+    });
+  }
+
   getPostsObservable(): Observable<any[]> {
-    console.log('Getting posts observable');
     return this.postsSubject.asObservable();
   }
 
   private getPostsFromStorage(): any[] {
-    try {
-      console.log('Fetching posts from localStorage');
-      const storedPosts = localStorage.getItem(this.localStorageKey);
-      const posts = storedPosts ? JSON.parse(storedPosts) : [];
-      console.log('Retrieved posts:', posts);
-      return posts;
-    } catch (error) {
-      console.error('Error getting posts from storage:', error);
-      return [];
-    }
+    const storedPosts = localStorage.getItem(this.localStorageKey);
+    return storedPosts ? JSON.parse(storedPosts) : [];
   }
 
   addPost(newPost: any): void {
-    try {
-      const posts = this.getPostsFromStorage();
-      posts.push(newPost);
-      localStorage.setItem(this.localStorageKey, JSON.stringify(posts));
-      this.postsSubject.next(posts);
-      console.log('Post added successfully:', newPost);
-      console.log('Updated posts:', posts);
-    } catch (error) {
-      console.error('Error adding post:', error);
-    }
+    newPost.id = this.generateId(); // Lägg till ID för nya inlägg
+    const posts = this.getPostsFromStorage();
+    posts.push(newPost);
+    localStorage.setItem(this.localStorageKey, JSON.stringify(posts));
+    this.postsSubject.next(posts);
   }
 }

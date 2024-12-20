@@ -10,6 +10,7 @@ import { PostService } from '../../services/post.service';
   styleUrls: ['./create-new-post-page.component.css'],
 })
 export class CreateNewPostPageComponent {
+  // Template for a new post
   newPost = {
     title: '',
     thumbnailUrl: '',
@@ -22,12 +23,14 @@ export class CreateNewPostPageComponent {
 
   constructor(private postService: PostService) {}
 
+  // Handle form submission
   onSubmit() {
-    this.postService.addPost(this.newPost); // Använd servicen för att lägga till inlägget
+    this.postService.addPost(this.newPost);
     alert('Blog post has been saved!');
     this.resetForm();
   }
 
+  // Reset form after submission
   resetForm() {
     this.newPost = {
       title: '',

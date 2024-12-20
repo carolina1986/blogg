@@ -1,4 +1,3 @@
-// home-page.component.ts
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -12,20 +11,19 @@ import { PostService } from '../../services/post.service';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
+  // Array to store blog posts
   posts: any[] = [];
 
-  constructor(private postService: PostService) {
-    alert('HomePage Constructor');  // Detta ska visa en alert
-  }
+  constructor(private postService: PostService) {}
 
   ngOnInit() {
-    alert('HomePage Init');  // Detta ska visa en alert
+    // Load posts when component initializes
     this.loadPosts();
   }
 
+  // Fetch posts from the service
   loadPosts() {
     this.postService.getPostsObservable().subscribe(posts => {
-      alert(`Loaded ${posts.length} posts`);  // Detta ska visa antal posts
       this.posts = posts;
     });
   }
