@@ -1,0 +1,21 @@
+button {
+    background: #9f65cf;
+    border: none;
+    padding: 5px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+
+.textarea-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-self: start;
+    margin: 20px;
+}

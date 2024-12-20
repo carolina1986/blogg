@@ -1,15 +1,23 @@
 * {
     padding: 5px;
     margin: 0;
+    color: black;
 }
 
 .navbar-container {
     display: flex;
     justify-content: end;
-    background-color: blanchedalmond;
 }
 
 a {
     display: flex;
+    text-decoration-line: none;
+}
 
+button {
+    background: #9f65cf;
+    border: none;
+    padding: 5px 16px;
+    border-radius: 4px;
+    cursor: pointer;
 }

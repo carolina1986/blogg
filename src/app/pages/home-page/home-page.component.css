@@ -6,6 +6,9 @@
 }
 
 .post-card {
+    width: 100vh;
+    height: 30vh;
+    margin: 20px;
     border: 1px solid #ddd;
     padding: 15px;
     border-radius: 8px;
@@ -13,19 +16,15 @@
 }
 
 .post-card img {
-    max-width: 100%;
-    height: auto;
+    width: 50%;
+    height: 80%;
 }
 
 .post-card button {
-    background-color: #007bff;
-    color: white;
+    background: transparent;
+    color: #6619a5;
     border: none;
     padding: 8px 16px;
     border-radius: 4px;
-    cursor: pointer;
-}
-
-.post-card button:hover {
-    background-color: #0056b3;
+    cursor: pointer; 
 }
