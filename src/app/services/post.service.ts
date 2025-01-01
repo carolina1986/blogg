@@ -9,10 +9,10 @@ export class PostService { // Creating a service to manage blog posts
   private postsSubject: BehaviorSubject<any[]>; // Private subject to store the list of posts
 
   constructor() { 
-    const initialPosts = this.getPostsFromStorage(); // Fetching and saving existing posts from local storage
+    const initialPosts = this.getPostsFromStorage(); // Initializes the service by fetching posts from local storage and setting up a reactive state
     this.postsSubject = new BehaviorSubject<any[]>(initialPosts); // Creating a new subject with the posts found in local storage
     
-    if (initialPosts.length === 0) { // If there are no posts in local storage, create a test post
+    if (initialPosts.length === 0) { // Checks if there are no saved posts and creates a default test post
       const testPost = {
         id: this.generateId(), // Ussing the function generateId that is created below
         title: 'Test Post',
@@ -31,7 +31,7 @@ export class PostService { // Creating a service to manage blog posts
 
   // Fetch a specific post by ID
   getPost(id: string): Observable<any> { // Function that creates an observable to send the post to subscribers
-    return new Observable(observer => { // Creating a new observable
+    return new Observable(observer => { // Creates a custom observable that emits the post matching the given ID
       const posts = this.getPostsFromStorage(); // Fetching posts from local storage using the function getPostsFromStorage that is created below
       const post = posts.find(p => p.id === id); // Finding the post with the specified ID by using the built-in find function
       observer.next(post || null); // Using the next function to send the post to subscribers, or null if the post is not found
