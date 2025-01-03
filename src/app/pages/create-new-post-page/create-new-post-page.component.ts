@@ -9,6 +9,8 @@ import { PostService } from '../../services/post.service';
   templateUrl: './create-new-post-page.component.html',
   styleUrls: ['./create-new-post-page.component.css'],
 })
+
+
 export class CreateNewPostPageComponent {
   // Template for a new post
   newPost = {
@@ -21,13 +23,14 @@ export class CreateNewPostPageComponent {
     comments: [],
   };
 
+  // Inject the post service
   constructor(private postService: PostService) {}
 
-  // Handle form submission
+  // Functon for submitting the form (adding a new post)
   onSubmit() {
-    this.postService.addPost(this.newPost);
+    this.postService.addPost(this.newPost); // Add the new post to the service
     alert('Blog post has been saved!');
-    this.resetForm();
+    this.resetForm(); // Reset the form (function below)
   }
 
   // Reset form after submission
