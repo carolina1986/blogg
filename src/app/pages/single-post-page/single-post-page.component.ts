@@ -14,7 +14,7 @@ import { PostService } from '../../services/post.service';
       <img *ngIf="post.thumbnailUrl" [src]="post.thumbnailUrl" alt="Post thumbnail">
       <p>{{post.body}}</p>
       <p>Published: {{post.creationDate | date}}</p>
-      <button (click)="deletePost()">Radera inlägg</button>
+      <button (click)="deletePost()">Delete post</button>
     </div>
     <div *ngIf="!post">
       <p>Post could not be found.</p>
