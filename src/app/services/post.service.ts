@@ -58,4 +58,19 @@ export class PostService { // Creating a service to manage blog posts
     localStorage.setItem(this.localStorageKey, JSON.stringify(posts)); // Saving the updated list of posts to local storage using the built-in setItem function and the key that is defined above
     this.postsSubject.next(posts); // Using the built-in next function to send the updated list of posts to subscribers
   }
+
+  deletePost(id: string): void { // Function that deletes a post from the list of posts
+    const posts = this.getPostsFromStorage(); // Fetching posts from local storage using the function getPostsFromStorage that is created above
+    const updatedPosts = posts.filter(p => p.id !== id); // Filtering out the post with the specified ID using the built-in filter function
+    localStorage.setItem(this.localStorageKey, JSON.stringify(updatedPosts)); // Saving the updated list of posts to local storage using the built-in setItem function and the key that is defined above
+    this.postsSubject.next(updatedPosts); // Using the built-in next function to send the updated list of posts to subscribers
+  }
+  
+
+  updatePost(updatedPost: any): void { // Function that updates an existing post in the list of posts
+    const posts = this.getPostsFromStorage(); // Fetching posts from local storage using the function getPostsFromStorage that is created above
+    const updatedPosts = posts.map(p => (p.id === updatedPost.id ? updatedPost : p)); // Mapping over the list of posts and replacing the post with the specified ID with the updated post
+    localStorage.setItem(this.localStorageKey, JSON.stringify(updatedPosts)); // Saving the updated list of posts to local storage using the built-in setItem function and the key that is defined above
+    this.postsSubject.next(updatedPosts); // Using the built-in next function to send the updated list of posts to subscribers
+  }
 }
