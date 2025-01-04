@@ -12,23 +12,26 @@
 </p>
 <br>
 <br>
-<form action="">
+<form (ngSubmit)="onSubmit()" #contactForm="ngForm" novalidate>
+    
+
+    
     <div>
         <label for="guestEmailAddress">Your email:</label>
-        <input type="email" name="guestEmailAddress">
+        <input type="email" id="guestEmailAddress" name="guestEmailAddress" [(ngModel)]="newMessage.guestEmailAddress" required>
     </div>
  
     <div>
     <label for="guestName">Your name:</label>
-    <input type="text" name="guestName">
+    <input type="text" name="guestName" id="guestName" [(ngModel)]="newMessage.guestName" required>
 </div>    
 <div>
     <label for="isEarthFlat">Is the Earth flat?</label>
     <input type="checkbox" name="isEarthFlat">
 </div>
 <div class="textarea-wrapper">
-    <label for="guestText">Type your message here:</label>
-    <textarea name="guestText" id="guestText" cols="70" rows="10"></textarea>
+    <label for="guestMessage">Type your message here:</label>
+    <textarea name="guestMessage" id="guestMessage" cols="70" rows="10" [(ngModel)]="newMessage.guestMessage" required></textarea>
 </div>
-<button type="submit">Submit</button>
+<button type="submit" (click)="onSubmit()">Send</button>
 </form>
