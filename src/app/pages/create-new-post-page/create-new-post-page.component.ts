@@ -18,8 +18,7 @@ export class CreateNewPostPageComponent {
     thumbnailUrl: '',
     body: '',
     creationDate: new Date(),
-    likes: 0,
-    dislikes: 0,
+    reactions: 0,
     comments: [],
   };
 
@@ -40,8 +39,7 @@ export class CreateNewPostPageComponent {
       thumbnailUrl: '',
       body: '',
       creationDate: new Date(),
-      likes: 0,
-      dislikes: 0,
+      reactions: 0,
       comments: [],
     };
   }
