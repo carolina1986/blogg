@@ -1,0 +1,13 @@
+<!-- Show posts if available, otherwise show "no posts" message -->
+<div *ngIf="posts.length > 0; else noPosts">
+    <div *ngFor="let post of posts" class="post-card">
+        <h2>{{post.title}}</h2>
+        <!-- Only show image if thumbnailUrl exists -->
+        <img [src]="post.thumbnailUrl" *ngIf="post.thumbnailUrl">
+        <button class="button-type-one" routerLink="/single-post/{{post.id}}">Read more</button>
+    </div>
+</div>
+
+<ng-template #noPosts>
+    <p>No posts available yet!</p>
+</ng-template>
