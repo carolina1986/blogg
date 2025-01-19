@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { PostService } from '../../services/post.service';
+import { PostCarouselComponent } from "../../components/post-carousel/post-carousel.component";
 
 // The component decorator
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, PostCarouselComponent],
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css']
 })
