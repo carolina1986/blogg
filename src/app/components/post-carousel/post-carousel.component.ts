@@ -10,8 +10,10 @@ import { PostService } from '../../services/post.service';
   templateUrl: './post-carousel.component.html',
   styleUrl: './post-carousel.component.css'
 })
-export class PostCarouselComponent implements OnInit {  // Promises that a function called ngOnInit will be implemented
-  posts: any[] = []; // Array to store blog posts
+export class PostCarouselComponent implements OnInit { 
+  posts: any[] = []; // An array to store the posts fetched from the service
+  currentIndex: number = 0; // The index of the current post being viewed
+  postsPerView: number = 1; // The number of posts to display at a time
 
   // The constructor is used, in this case, to inject the post service
   constructor(private postService: PostService) {}
@@ -31,4 +33,34 @@ export class PostCarouselComponent implements OnInit {  // Promises that a funct
       this.posts = posts;
     });
   }
+
+  // Using getter to return the current posts to display
+  get currentPosts(): any[] {
+    return this.posts.slice(this.currentIndex, this.currentIndex + this.postsPerView);
+  }
+
+
+  previousPosts() {
+    if (this.currentIndex > 0) { // If the current index is greater than 0
+      this.currentIndex -= this.postsPerView; // Decrease the index by the number of posts per view
+      if (this.currentIndex < 0) { // If the current index is less than 0
+        this.currentIndex = 0; // Set the current index to 0
+      }
+    }
+  }
+
+  nextPosts() {
+    if (this.currentIndex + this.postsPerView < this.posts.length) { // If the current index plus the number of posts per view is less than the length of the posts array
+      this.currentIndex += this.postsPerView; // Increase the index by the number of posts per view
+    }
+  }
+
+  canGoPrevious(): boolean { 
+    return this.currentIndex > 0; 
+  }
+
+  canGoNext(): boolean {
+    return this.currentIndex + this.postsPerView < this.posts.length; 
+  }
+    
 }

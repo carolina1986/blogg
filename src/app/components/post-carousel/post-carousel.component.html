@@ -1,13 +1,32 @@
-<!-- Show posts if available, otherwise show "no posts" message -->
-<div *ngIf="posts.length > 0; else noPosts">
-    <div *ngFor="let post of posts" class="post-card">
-        <h2>{{post.title}}</h2>
-        <!-- Only show image if thumbnailUrl exists -->
-        <img [src]="post.thumbnailUrl" *ngIf="post.thumbnailUrl">
-        <button class="button-type-one" routerLink="/single-post/{{post.id}}">Read more</button>
+<!-- post-carousel.component.html -->
+<div class="carousel-container">
+    <button 
+      class="nav-button prev" 
+      (click)="previousPosts()" 
+      [disabled]="!canGoPrevious()"
+      *ngIf="posts.length > postsPerView">
+      ←
+    </button>
+  
+    <div class="posts-container">
+      <div *ngIf="posts.length > 0; else noPosts" class="posts-wrapper">
+        <div *ngFor="let post of currentPosts" class="post-card">
+          <h2>{{post.title}}</h2>
+          <img [src]="post.thumbnailUrl" *ngIf="post.thumbnailUrl">
+          <button class="button-type-one" routerLink="/single-post/{{post.id}}">Read more</button>
+        </div>
+      </div>
     </div>
-</div>
-
-<ng-template #noPosts>
+  
+    <button 
+      class="nav-button next" 
+      (click)="nextPosts()" 
+      [disabled]="!canGoNext()"
+      *ngIf="posts.length > postsPerView">
+      →
+    </button>
+  </div>
+  
+  <ng-template #noPosts>
     <p>No posts available yet!</p>
-</ng-template>
+  </ng-template>

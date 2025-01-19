@@ -1,0 +1,60 @@
+/* post-carousel.component.css */
+.carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 0 40px;
+  }
+  
+  .posts-container {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+  }
+  
+  .posts-wrapper {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.3s ease;
+  }
+  
+  .post-card {
+    flex: 0 0 calc(33.333% - 14px);
+    max-width: calc(33.333% - 14px);
+  }
+  
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+  
+  .nav-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .nav-button.prev {
+    left: 0;
+  }
+  
+  .nav-button.next {
+    right: 0;
+  }
+  
+  .post-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
