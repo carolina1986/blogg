@@ -3,12 +3,13 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { PostService } from '../../services/post.service';
 import { PostCarouselComponent } from "../../components/post-carousel/post-carousel.component";
+import { BloggIntroductionComponent } from "../../component/blogg-introduction/blogg-introduction.component";
 
 // The component decorator
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [CommonModule, RouterModule, PostCarouselComponent],
+  imports: [CommonModule, RouterModule, PostCarouselComponent, BloggIntroductionComponent],
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css']
 })
