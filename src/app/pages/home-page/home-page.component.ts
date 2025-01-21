@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { PostService } from '../../services/post.service';
 import { PostCarouselComponent } from "../../components/post-carousel/post-carousel.component";
-import { BloggIntroductionComponent } from "../../component/blogg-introduction/blogg-introduction.component";
+import { BloggIntroductionComponent } from "../../components/blogg-introduction/blogg-introduction.component";
 
 // The component decorator
 @Component({
