@@ -1,6 +1,11 @@
-<div class="navbar-container">
-    <a *ngIf="showCreateNewPostLink" routerLink="/create-new-post-page">Create</a>
-    <a routerLink="/">Home</a>
-    <a routerLink="/about-me-page">About Me</a>
-    <button (click)="toggleCreateNewPostLink()">Admin</button>
+<div class="navbar">
+    <div class="title">
+        EdgeOfRealiity.com
+    </div>
+    <div class="navbar-navigation">
+        <a *ngIf="showCreateNewPostLink" routerLink="/create-new-post-page">Create</a>
+        <a routerLink="/">Home</a>
+        <a routerLink="/about-me-page">About</a>
+        <button [ngClass]="{'active-admin': showCreateNewPostLink}" (click)="toggleCreateNewPostLink()">Admin</button>
+    </div>
 </div>

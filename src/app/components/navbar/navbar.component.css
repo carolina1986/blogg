@@ -1,23 +1,37 @@
 * {
     padding: 5px;
     margin: 0;
-    color: black;
+    color: #6AA756;
 }
 
-.navbar-container {
+.navbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    font-size: 32px;
+}
+
+.navbar-navigation {
     display: flex;
     justify-content: end;
 }
 
 a {
+    margin-top: 5px;
     display: flex;
     text-decoration-line: none;
 }
 
 button {
-    background: #9f65cf;
+    background: none;
     border: none;
-    padding: 5px 16px;
+    padding: 10px;
     border-radius: 4px;
     cursor: pointer;
+}
+
+.active-admin {
+    background: #783D3D;    
 }
