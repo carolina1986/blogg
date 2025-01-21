@@ -13,7 +13,7 @@ import { PostService } from '../../services/post.service';
 export class PostCarouselComponent implements OnInit { 
   posts: any[] = []; // An array to store the posts fetched from the service
   currentIndex: number = 0; // The index of the current post being viewed
-  postsPerView: number = 1; // The number of posts to display at a time
+  postsPerView: number = 2; // The number of posts to display at a time
 
   // The constructor is used, in this case, to inject the post service
   constructor(private postService: PostService) {}

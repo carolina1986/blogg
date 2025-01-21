@@ -1,7 +1,11 @@
+
+
 .blog-introduction-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 350px;
+    color: #F0B00D;
+
 }
 
 .blog-introduction-image-container {
@@ -17,24 +21,20 @@
 .blog-introduction-text-container {
     grid-column: 2/3;
     height: 350px;
-    background: rgb(62,149,68);
-    background: radial-gradient(, 
-        rgba(62,149,68,1) 0%, 
-        rgba(39,122,45,1) 52%, 
-        rgba(14,92,21,1) 76%, 
-        rgba(27,27,27,1) 86%);
-}
+    background: radial-gradient(#10511a 0%, #121212 100%);}
 
 .blog-introduction-h1 {
     padding: 15px;
     font-size: 2rem;
     font-weight: 600;
-    color: #333;
 }
 
 .blog-introduction-p  {
     padding: 15px;
     font-size: 1rem;
     font-weight: 400;
-    color: #333;
+}
+
+a {
+    color: #F0B00D;
 }

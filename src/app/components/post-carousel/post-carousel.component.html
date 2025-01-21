@@ -10,9 +10,9 @@
     <div class="posts-container">
       <div *ngIf="posts.length > 0; else noPosts" class="posts-wrapper">
         <div *ngFor="let post of currentPosts" class="post-card">
-          <h2>{{post.title}}</h2>
-          <img [src]="post.thumbnailUrl" *ngIf="post.thumbnailUrl">
-          <button class="button-type-one" routerLink="/single-post/{{post.id}}">Read more</button>
+          <h2 class="post-card-title">{{post.title}}</h2>
+          <img class="post-card-img" [src]="post.thumbnailUrl" *ngIf="post.thumbnailUrl">
+          <button class="button-read-more" routerLink="/single-post/{{post.id}}">Read more</button>
         </div>
       </div>
     </div>
