@@ -4,10 +4,12 @@ import { BehaviorSubject, Observable } from 'rxjs'; // Allows subscribers to lis
 @Injectable({
   providedIn: 'root', // Makes the service available to the entire application
 })
+
 export class PostService { // Creating a service to manage blog posts
   private localStorageKey = 'blogPosts'; // Private key for storing posts in local storage
   private postsSubject: BehaviorSubject<any[]>; // Private subject to store the list of posts
-
+  private isAdminMode = new BehaviorSubject<boolean>(false); // Private subject to store the admin mode state
+  
   constructor() { 
     const initialPosts = this.getPostsFromStorage(); // Initializes the service by fetching posts from local storage and setting up a reactive state
     this.postsSubject = new BehaviorSubject<any[]>(initialPosts); // Creating a new subject with the posts found in local storage
@@ -24,6 +26,16 @@ export class PostService { // Creating a service to manage blog posts
       };
       this.addPost(testPost); // Adding the test post to the list of posts
     }
+  }
+
+  // Function that returns an observable to send the admin mode state to subscribers  
+  getAdminMode(): Observable<boolean> { 
+    return this.isAdminMode.asObservable(); // Using the asObservable function to return the subject as an observable
+  }
+
+  // Function that sets the admin mode state
+  setAdminMode(isAdmin: boolean): void { 
+    this.isAdminMode.next(isAdmin); // Using the next function to send the admin mode state to subscribers
   }
 
   // Generate a unique ID for each post
