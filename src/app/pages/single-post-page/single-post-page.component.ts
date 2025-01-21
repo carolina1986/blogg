@@ -18,6 +18,9 @@ export class SinglePostPageComponent implements OnInit, OnDestroy { // Promises 
   post: any = null; // The post object, initially null
   newComment: any = { body: '' }; // The new comment object, initially empty
   private postSubscription?: Subscription;
+  isAdmin: boolean = false; // The admin mode state, initially false
+  private adminSubscription?: Subscription; // The subscription to the admin mode state
+
 
   // The constructor is called when the component is created, works as a setup function and contains the component's dependencies
   constructor( 
@@ -43,6 +46,9 @@ export class SinglePostPageComponent implements OnInit, OnDestroy { // Promises 
 
   // The ngOnInit that was promised in the class declaration
   ngOnInit() {
+    this.adminSubscription = this.postService.getAdminMode().subscribe(
+      isAdmin => this.isAdmin = isAdmin
+    );
     this.route.params.subscribe(params => {
         const id = params['id'];
         if (id) {
@@ -60,6 +66,10 @@ export class SinglePostPageComponent implements OnInit, OnDestroy { // Promises 
     if (this.postSubscription) {
       this.postSubscription.unsubscribe(); // Unsubscribe from the observable to prevent memory leaks
     }
+    if (this.adminSubscription) {  // Check if the subscription exists
+      this.adminSubscription.unsubscribe(); // Unsubscribe from the observable to prevent memory leaks
+    }
+
   }
 
   deletePost() {

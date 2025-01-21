@@ -26,7 +26,7 @@
       <button type="submit" [disabled]="!commentForm.valid">Publish</button>
     </form>
 
-      <button (click)="deletePost()">Delete post</button>
+      <button *ngIf="isAdmin" (click)="deletePost()">Delete post</button>
       <button routerLink="/">Back</button>
   </div>
       
