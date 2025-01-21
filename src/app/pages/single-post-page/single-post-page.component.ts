@@ -8,43 +8,9 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-single-post-page', // The name of the HTML element
   standalone: true, // Makes the component a standalone component
   imports: [CommonModule, FormsModule, RouterModule], // List of modules to import
-  template: 
-  `<div *ngIf="post">
-    <div>
-      <h1>{{post.title}}</h1>
-       <p>Published: {{post.creationDate | date}}</p>
-      <img *ngIf="post.thumbnailUrl" [src]="post.thumbnailUrl" alt="Post thumbnail">
-      <p>{{post.body}}</p>
-    </div>
-
-    <div>
-      <button (click)="increaseReactions()">Like</button>
-      <p>Reactions: {{post.reactions}}</p>
-      <button (click)="decreaseReactions()">Dislike</button>
-    </div>
-
-    <div *ngIf="post?.comments?.length > 0">
-      <h2>Comments</h2>
-      <div *ngFor="let comment of post.comments">
-        <p>{{comment.body}}</p>
-      </div> 
-    </div>
-
-    <h3>Add a comment</h3>
-    <form (ngSubmit)="onSubmit()" #commentForm="ngForm"> 
-      <label for="comment">Write your comment below:</label>
-      <textarea id="comment" name="comment" [(ngModel)]="newComment.body" required></textarea>
-      <button type="submit" [disabled]="!commentForm.valid">Publish</button>
-    </form>
-
-      <button (click)="deletePost()">Delete post</button>
-      <button routerLink="/">Back</button>
-  </div>
-      
-  <div *ngIf="!post">
-    <p>Post could not be found.</p>
-  </div>`
-    })
+  templateUrl: './single-post-page.component.html', // The HTML file for the component
+  styleUrls: ['./single-post-page.component.css'] // The CSS file for the component
+})
 
 // The class for the component
 export class SinglePostPageComponent implements OnInit { // Promises that a function called ngOnInit will be implemented
