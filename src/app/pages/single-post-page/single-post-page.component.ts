@@ -41,37 +41,33 @@ export class SinglePostPageComponent implements OnInit, OnDestroy { // Promises 
     this.newComment = { body: '' };
   }
 
-
-
-  updatePost() { 
-    this.postService.updatePost(this.post); 
-  }
-
-
   // The ngOnInit that was promised in the class declaration
   ngOnInit() {
     this.route.params.subscribe(params => {
         const id = params['id'];
         if (id) {
-            // Prenumerera på alla ändringar i posts
+            // Subscribe to the posts observable
             this.postSubscription = this.postService.getPostsObservable().subscribe(posts => {
-                // Hitta den specifika posten vi är intresserade av
-                this.post = posts.find(p => p.id === id);
+              // Find the post with the specified ID
+              this.post = posts.find(p => p.id === id);
             });
         }
     });
   }
 
-  //
+  // function that is called when the component is destroyed
   ngOnDestroy() {
     if (this.postSubscription) {
-      this.postSubscription.unsubscribe();
+      this.postSubscription.unsubscribe(); // Unsubscribe from the observable to prevent memory leaks
     }
   }
 
   deletePost() {
     this.postService.deletePost(this.post.id);
+  }
 
+  updatePost() { 
+    this.postService.updatePost(this.post); 
   }
 
   increaseReactions() {
