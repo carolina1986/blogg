@@ -28,12 +28,12 @@
     background: linear-gradient(180deg, #F1A416 20%, #f3c349 79%);    width: 250px;
     height: 220px;
     width: 150px;
-    color: rgb(16, 16, 16);
+    color: #101010;
   }
 
   .post-card-title {
     grid-row: 1/2;
-    font-size: 18px;
+    font-size: 18px; 
     font-weight: 500;
   }
 
