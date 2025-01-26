@@ -1,4 +1,51 @@
 * {
     color: #F0B00D;
-    margin: 10px;
 }
+
+form {
+    width: 800px;
+    margin-top: 50px;
+}
+
+div {
+    display: flex;
+    flex-direction: row;
+}
+
+input {
+    margin: 5px;
+    padding: 5px;
+    border: none;
+    width: 400px;
+    border-radius: 5px;
+    background-color: rgb(63, 63, 63);
+}
+
+textarea {
+    resize: none;
+    padding: 5px;
+    border: none;
+    width: 800px;
+    height: 400px;
+    margin-top: 10px;
+    border-radius: 5px;
+    background-color: rgb(63, 63, 63);
+}
+
+textarea::placeholder {
+    color: #F0B00D;
+}
+
+button {
+    color: #6AA756;
+    background: none;
+    border: 1px solid #6AA756;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    width: 70px;
+    height: 30px;
+    align-self: center;
+}
+
+

@@ -33,8 +33,14 @@
 
   .post-card-title {
     grid-row: 1/2;
-    font-size: 18px; 
+    font-size: 16px; 
     font-weight: 500;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
   }
 
   .post-card-img {

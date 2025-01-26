@@ -1,5 +1,4 @@
 <h1>About me</h1>
-
 <p>Who am I? Thats actually not so important, but getting the truth out there is!
     <br>
     <br>
@@ -13,21 +12,14 @@
 <br>
 <br>
 <form (ngSubmit)="onSubmit()" #contactForm="ngForm" novalidate>
-    
-
-    
     <div>
         <label for="guestEmailAddress">Your email:</label>
         <input type="email" id="guestEmailAddress" name="guestEmailAddress" [(ngModel)]="newMessage.guestEmailAddress" required>
     </div>
- 
     <div>
-    <label for="guestName">Your name:</label>
-    <input type="text" name="guestName" id="guestName" [(ngModel)]="newMessage.guestName" required>
-</div>    
-<div class="textarea-wrapper">
-    <label for="guestMessage">Type your message here:</label>
-    <textarea name="guestMessage" id="guestMessage" cols="70" rows="10" [(ngModel)]="newMessage.guestMessage" required></textarea>
-</div>
-<button type="submit" (click)="onSubmit()">Send</button>
+        <label for="guestName">Your name:</label>
+        <input type="text" name="guestName" id="guestName" [(ngModel)]="newMessage.guestName" required>
+    </div>    
+    <textarea name="guestMessage" id="guestMessage" placeholder="Write your message here..." cols="70" rows="10" [(ngModel)]="newMessage.guestMessage" required></textarea>
+    <button type="submit" (click)="onSubmit()">Send</button>
 </form>

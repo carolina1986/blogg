@@ -7,12 +7,11 @@
       <img class="post-img" *ngIf="post.thumbnailUrl" [src]="post.thumbnailUrl" alt="Post thumbnail">
       <p class="post-text">{{post.body}}</p>    
     </div>
-
     <div class="wrapper">
       <div class="reactions">
-        <button (click)="increaseReactions()">Like</button>
+        <button (click)="increaseReactions()">Up</button>
         <p>Reactions: {{post.reactions}}</p>
-        <button (click)="decreaseReactions()">Dislike</button>
+        <button (click)="decreaseReactions()">Down</button>
       </div>
       <div class="comments">
         <h2 class="comments-header">Comments:</h2>
@@ -30,11 +29,9 @@
         </form>
       </div>
     </div>
-
-      <button *ngIf="isAdmin" (click)="deletePost()">Delete post</button>
       <button routerLink="/">Back</button>
-  </div>
-      
+      <button class="delete-button" *ngIf="isAdmin" (click)="deletePost()">Delete post</button>
+  </div>   
   <div *ngIf="!post">
     <p>Post could not be found.</p>
   </div>
