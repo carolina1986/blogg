@@ -12,6 +12,10 @@ div {
     flex-direction: row;
 }
 
+label {
+    display: flex;
+}
+
 input {
     margin: 5px;
     padding: 5px;
@@ -48,4 +52,8 @@ button {
     align-self: center;
 }
 
-
+button:hover {
+    background-color: #6AA756;
+    color: white;
+    transition: background-color 0.3s, color 0.3s;
+}

@@ -30,7 +30,7 @@
       </div>
     </div>
       <button routerLink="/">Back</button>
-      <button class="delete-button" *ngIf="isAdmin" (click)="deletePost()">Delete post</button>
+      <button id="delete-button" *ngIf="isAdmin" (click)="deletePost()">Delete post</button>
   </div>   
   <div *ngIf="!post">
     <p>Post could not be found.</p>

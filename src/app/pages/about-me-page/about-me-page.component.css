@@ -34,7 +34,6 @@ textarea::placeholder {
     color: #F0B00D;
 }
 
-
 button {
     color: #6AA756;
     background: none;
@@ -45,4 +44,10 @@ button {
     width: 60px;
     height: 25px;
     align-self: center;
+}
+
+button:hover {
+    background-color: #6AA756;
+    color: white;
+    transition: background-color 0.3s, color 0.3s;
 }
