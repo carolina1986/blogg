@@ -20,8 +20,10 @@ export class AboutMePageComponent {
   onSubmit() {
     // Display the message details in an alert using JSON.stringify to format the object
     alert(`Message Details: ${JSON.stringify(this.newMessage, null, 2)}`);
+
+    this.resetForm();
   }
-  
+
   resetForm() {
     this.newMessage = {
       guestName: '',
