@@ -122,12 +122,13 @@ export class PostService { // Creating a service to manage blog posts
     const posts = this.getPostsFromStorage(); 
     const updatedPosts = posts.map(p => { 
       if (p.id === postId) { 
-        if (p.reactions > 0) 
+        if (p.reactions > 0)
         p.reactions--; 
       }
       return p; // Returning the post
     });
     localStorage.setItem(this.localStorageKey, JSON.stringify(updatedPosts)); 
+    this.postsSubject.next(updatedPosts); // Using the built-in next function to send the updated list of posts to subscribers
   }
 
 }
